@@ -63,7 +63,7 @@ done
 
 # Truecaser
 echo "=>  Truecasing...."
-echo "Training for english..."
+echo "Training for vietnamese..."
 env LC_ALL=en_US.UTF-8  $TRUECASER_TRAIN --model $DATASET/tmp/truecase-model.vi --corpus ${TOKENIZED_DATA}/train.vi
 
 for set in $DATASET_NAME; do
@@ -75,8 +75,8 @@ for set in $DATASET_NAME; do
 done
 
 # SentencePieceでサブワード化
-python3.6 $EXPDIR/preprocess/subword_train.py -i ${TRUECASED_DATA}/train.vi -o $DATASET/tmp/sp.16000.vi -v 16000
-python3.6 $EXPDIR/preprocess/subword_train.py -i ${TRUECASED_DATA}/train.ja -o $DATASET/tmp/sp.16000.ja -v 16000
+python3.6 $EXPDIR/preprocess/subword_train.py -i ${TRUECASED_DATA}/train.vi -o $DATASET/tmp/sp.6000.vi -v 6000
+python3.6 $EXPDIR/preprocess/subword_train.py -i ${TRUECASED_DATA}/train.ja -o $DATASET/tmp/sp.6000.ja -v 6000
 
 for lang in $src $tgt; do
     for set in $DATASET_NAME; do
