@@ -32,7 +32,7 @@ python3.6 $EXPDIR/postprocess/subword_decode.py -i ${PWD}/results/${MODEL_NAME}/
 $DETRUECASER < ${PWD}/results/${MODEL_NAME}/valid_rmvsubword.${tgt} > ${PWD}/results/${MODEL_NAME}/valid_detruecase.${tgt}
 
 # detokenize
-python3.6 $DETOK ${PWD}/results/${MODEL_NAME}/valid_detruecase.${tgt} ${PWD}/results/${MODEL_NAME}/valid.${tgt}
+python3.6 $EXPDIR/postprocess/detokenize.py ${PWD}/results/${MODEL_NAME}/valid_detruecase.${tgt} ${PWD}/results/${MODEL_NAME}/valid.${tgt}
 
 echo "VALID" >> ${PWD}/results/${MODEL_NAME}/valid_result.txt
 env LC_ALL=en_US.UTF-8 perl $PWD/multi-bleu.pl $PWD/data/tmp/normalized/valid.${tgt} < ${PWD}/results/${MODEL_NAME}/valid.${tgt} >> ${PWD}/results/${MODEL_NAME}/valid_result.txt
@@ -52,7 +52,7 @@ python3.6 $EXPDIR/postprocess/subword_decode.py -i ${PWD}/results/${MODEL_NAME}/
 $DETRUECASER < ${PWD}/results/${MODEL_NAME}/test_rmvsubword.${tgt} > ${PWD}/results/${MODEL_NAME}/test_detruecase.${tgt}
 
 # detokenize
-python3.6 $DETOK ${PWD}/results/${MODEL_NAME}/test_detruecase.${tgt} ${PWD}/results/${MODEL_NAME}/test.${tgt}
+python3.6 $EXPDIR/postprocess/detokenize.py ${PWD}/results/${MODEL_NAME}/test_detruecase.${tgt} ${PWD}/results/${MODEL_NAME}/test.${tgt}
 
 echo "TEST" >> ${PWD}/results/${MODEL_NAME}/test_result.txt
 env LC_ALL=en_US.UTF-8 perl $PWD/multi-bleu.pl $PWD/data/tmp/normalized/test.${tgt} < ${PWD}/results/${MODEL_NAME}/test.${tgt} >> ${PWD}/results/${MODEL_NAME}/test_result.txt
