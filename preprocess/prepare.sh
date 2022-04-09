@@ -76,8 +76,8 @@ for set in $DATASET_NAME; do
 done
 
 # SentencePieceでサブワード化
-python3.6 $EXPDIR/preprocess/subword_train.py -i ${TRUECASED_DATA}/train.vi -o $DATASET/tmp/sp.${NUM_TOKENS}.vi -v 5000
-python3.6 $EXPDIR/preprocess/subword_train.py -i ${TRUECASED_DATA}/train.ja -o $DATASET/tmp/sp.${NUM_TOKENS}.ja -v 8000
+python3.6 $EXPDIR/preprocess/subword_train.py -i ${TRUECASED_DATA}/train.vi -o $DATASET/tmp/sp.5000.vi -v 5000
+python3.6 $EXPDIR/preprocess/subword_train.py -i ${TRUECASED_DATA}/train.ja -o $DATASET/tmp/sp.8000.ja -v 8000
 
 
 for set in $DATASET_NAME; do
