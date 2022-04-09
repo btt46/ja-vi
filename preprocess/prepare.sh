@@ -85,7 +85,7 @@ for set in $DATASET_NAME; do
 done
 
 for set in $DATASET_NAME; do
-    python3.6 $EXPDIR/preprocess/subword_apply.py -i ${TRUECASED_DATA}/${set}.vi -o ${SUBWORD_DATA}/${set}.vi -m $DATASET/tmp/sp.8000.vi.model
+    python3.6 $EXPDIR/preprocess/subword_apply.py -i ${TRUECASED_DATA}/${set}.ja -o ${SUBWORD_DATA}/${set}.ja -m $DATASET/tmp/sp.8000.ja.model
 done
 
 
