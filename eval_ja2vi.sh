@@ -10,6 +10,7 @@ GPUS=$1
 MODEL_NAME=$2
 MODEL=$PWD/models/${MODEL_NAME}/checkpoint_best.pt
 DETOK=$SCRIPTS/tokenizer/detokenizer.perl
+NUM_TOKENS=5000
 
 DATASET=$PWD/data
 SUBWORD_DATA=$DATASET/tmp/subword-data
@@ -25,7 +26,7 @@ CUDA_VISIBLE_DEVICES=$GPUS env LC_ALL=en_US.UTF-8 fairseq-interactive $BIN_DATA 
 
 grep ^H ${PWD}/results/${MODEL_NAME}/valid_trans_result.${tgt} | cut -f3 > ${PWD}/results/${MODEL_NAME}/valid_trans.${tgt}
 python3.6 $EXPDIR/postprocess/subword_decode.py -i ${PWD}/results/${MODEL_NAME}/valid_trans.${tgt} -o ${PWD}/results/${MODEL_NAME}/valid_rmvsubword.${tgt} \
-                                                -m $DATASET/tmp/sp.6000.en.model
+                                                -m $DATASET/tmp/sp.${NUM_TOKENS}.en.model
 
 # detruecase
 $DETRUECASER < ${PWD}/results/${MODEL_NAME}/valid_rmvsubword.${tgt} > ${PWD}/results/${MODEL_NAME}/valid_detruecase.${tgt}
@@ -45,7 +46,7 @@ CUDA_VISIBLE_DEVICES=$GPUS env LC_ALL=en_US.UTF-8 fairseq-interactive $BIN_DATA 
 
 grep ^H ${PWD}/results/${MODEL_NAME}/test_trans_result.${tgt} | cut -f3 > ${PWD}/results/${MODEL_NAME}/test_trans.${tgt}
 python3.6 $EXPDIR/postprocess/subword_decode.py -i ${PWD}/results/${MODEL_NAME}/test_trans.${tgt} -o ${PWD}/results/${MODEL_NAME}/test_rmvsubword.${tgt} \
-                                                -m $DATASET/tmp/sp.6000.en.model
+                                                -m $DATASET/tmp/sp.${NUM_TOKENS}.en.model
 
 # detruecase
 $DETRUECASER < ${PWD}/results/${MODEL_NAME}/test_rmvsubword.${tgt} > ${PWD}/results/${MODEL_NAME}/test_detruecase.${tgt}
