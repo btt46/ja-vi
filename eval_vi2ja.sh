@@ -4,7 +4,7 @@ EXPDIR=$PWD
 SCRIPTS=${HOME}/mosesdecoder/scripts
 DETRUECASER=${SCRIPTS}/recaser/detruecase.perl
 
-src=en
+src=vi
 tgt=ja
 GPUS=$1
 MODEL_NAME=$2
