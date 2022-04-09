@@ -9,7 +9,7 @@ tgt=ja
 GPUS=$1
 MODEL_NAME=$2
 MODEL=$PWD/models/${MODEL_NAME}/checkpoint_best.pt
-NUM_TOKENS=5000
+NUM_TOKENS=4000
 
 DATASET=$PWD/data
 SUBWORD_DATA=$DATASET/tmp/subword-data

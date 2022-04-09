@@ -10,7 +10,7 @@ CLEAN=$SCRIPTS/training/clean-corpus-n.perl
 TRUECASER_TRAIN=$SCRIPTS/recaser/train-truecaser.perl
 TRUECASER=$SCRIPTS/recaser/truecase.perl
 BPEROOT=$HOME/subword-nmt/subword_nmt
-NUM_TOKENS=5000
+NUM_TOKENS=4000
 
 
 DATASET=$PWD/data
