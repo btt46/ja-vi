@@ -77,7 +77,7 @@ done
 
 # SentencePieceでサブワード化
 python3.6 $EXPDIR/preprocess/subword_train.py -i ${TRUECASED_DATA}/train.vi -o $DATASET/tmp/sp.5000.vi -v 5000
-python3.6 $EXPDIR/preprocess/subword_train.py -i ${TRUECASED_DATA}/train.ja -o $DATASET/tmp/sp.8000.ja -v 8000
+python3.6 $EXPDIR/preprocess/subword_train.py -i ${TRUECASED_DATA}/train.ja -o $DATASET/tmp/sp.12000.ja -v 12000
 
 
 for set in $DATASET_NAME; do
@@ -85,7 +85,7 @@ for set in $DATASET_NAME; do
 done
 
 for set in $DATASET_NAME; do
-    python3.6 $EXPDIR/preprocess/subword_apply.py -i ${TRUECASED_DATA}/${set}.ja -o ${SUBWORD_DATA}/${set}.ja -m $DATASET/tmp/sp.8000.ja.model
+    python3.6 $EXPDIR/preprocess/subword_apply.py -i ${TRUECASED_DATA}/${set}.ja -o ${SUBWORD_DATA}/${set}.ja -m $DATASET/tmp/sp.12000.ja.model
 done
 
 
