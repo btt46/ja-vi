@@ -3,6 +3,7 @@ tgt=$2
 
 GPUS=$3
 MODEL_NAME=$4
+STEPS=$5
 
 EXPDIR=$PWD
 DATASET=$PWD/data
@@ -15,7 +16,7 @@ CUDA_VISIBLE_DEVICES=$GPUS fairseq-train $BIN_DATA -s ${src} -t ${tgt} \
                     --dropout 0.3 --weight-decay 0.0001 \
                     --criterion label_smoothed_cross_entropy --label-smoothing 0.1 \
                     --max-tokens 4096 \
-                    --patience 5 \
+                    --patience $STEPS \
                     --eval-bleu \
                     --eval-bleu-args '{"beam": 5, "max_len_a": 1.2, "max_len_b": 10}' \
                     --eval-bleu-detok moses \
