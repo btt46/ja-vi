@@ -79,11 +79,6 @@ done
 python3.6 $EXPDIR/preprocess/subword_train.py -i ${TRUECASED_DATA}/train.vi -o $DATASET/tmp/sp.${NUM_TOKENS}.vi -v 5000
 python3.6 $EXPDIR/preprocess/subword_train.py -i ${TRUECASED_DATA}/train.ja -o $DATASET/tmp/sp.${NUM_TOKENS}.ja -v 8000
 
-# for lang in $src $tgt; do
-#     for set in $DATASET_NAME; do
-#         python3.6 $EXPDIR/preprocess/subword_apply.py -i ${TRUECASED_DATA}/${set}.${lang} -o ${SUBWORD_DATA}/${set}.${lang} -m $DATASET/tmp/sp.${NUM_TOKENS}.${lang}.model
-#     done
-# done
 
 for set in $DATASET_NAME; do
     python3.6 $EXPDIR/preprocess/subword_apply.py -i ${TRUECASED_DATA}/${set}.vi -o ${SUBWORD_DATA}/${set}.vi -m $DATASET/tmp/sp.5000.vi.model

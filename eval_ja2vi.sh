@@ -26,7 +26,7 @@ CUDA_VISIBLE_DEVICES=$GPUS env LC_ALL=en_US.UTF-8 fairseq-interactive $BIN_DATA 
 
 grep ^H ${PWD}/results/${MODEL_NAME}/valid_trans_result.${tgt} | cut -f3 > ${PWD}/results/${MODEL_NAME}/valid_trans.${tgt}
 python3.6 $EXPDIR/postprocess/subword_decode.py -i ${PWD}/results/${MODEL_NAME}/valid_trans.${tgt} -o ${PWD}/results/${MODEL_NAME}/valid_rmvsubword.${tgt} \
-                                                -m $DATASET/tmp/sp.${NUM_TOKENS}.en.model
+                                                -m $DATASET/tmp/sp.5000.vi.model
 
 # detruecase
 $DETRUECASER < ${PWD}/results/${MODEL_NAME}/valid_rmvsubword.${tgt} > ${PWD}/results/${MODEL_NAME}/valid_detruecase.${tgt}
@@ -46,7 +46,7 @@ CUDA_VISIBLE_DEVICES=$GPUS env LC_ALL=en_US.UTF-8 fairseq-interactive $BIN_DATA 
 
 grep ^H ${PWD}/results/${MODEL_NAME}/test_trans_result.${tgt} | cut -f3 > ${PWD}/results/${MODEL_NAME}/test_trans.${tgt}
 python3.6 $EXPDIR/postprocess/subword_decode.py -i ${PWD}/results/${MODEL_NAME}/test_trans.${tgt} -o ${PWD}/results/${MODEL_NAME}/test_rmvsubword.${tgt} \
-                                                -m $DATASET/tmp/sp.${NUM_TOKENS}.en.model
+                                                -m $DATASET/tmp/sp.5000.vi.model
 
 # detruecase
 $DETRUECASER < ${PWD}/results/${MODEL_NAME}/test_rmvsubword.${tgt} > ${PWD}/results/${MODEL_NAME}/test_detruecase.${tgt}
